@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divina Harmonia - Where Spirit Meets Song</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "canvas-confetti": "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.module.mjs"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="notification-bar" class="notification-bar" style="display:none;"></div>
+    <div id="app-container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="Divina Harmonia Logo" id="logo">
+                <div>
+                    <h1>Divina Harmonia</h1>
+                    <p class="subtitle">Where Spirit Meets Song</p>
+                </div>
+            </div>
+            <button id="divine-flow-button">Divine Flow Mode</button>
+        </header>
+
+        <div id="main-layout">
+            <aside id="sidebar">
+                <h2>Creative Toolkit</h2>
+                <button id="clear-editor-button" class="sidebar-utility-button">New Song / Clear Editor</button>
+                
+                <div class="tool-section">
+                    <h3><span class="icon">🎵</span> Lyric Engine</h3>
+                    <label for="genre-select">Genre:</label>
+                    <select id="genre-select">
+                        <option value="gospel_contemporary">Gospel (Contemporary)</option>
+                        <option value="gospel_traditional">Gospel (Traditional)</option>
+                        <option value="gospel_urban">Gospel (Urban)</option>
+                        <option value="spiritual_soul">Spiritual Soul</option>
+                        <option value="cinematic_faith_ballads">Cinematic Faith Ballads</option>
+                        <option value="neoclassical_praise">Neo-Classical Praise</option>
+                        <option value="scripture_spoken_word">Scripture-Based Spoken Word</option>
+                        <option value="mystical_faith_ambient">Mystical/Faith Ambient</option>
+                    </select>
+                    <label for="lyric-target-select">Generate:</label>
+                    <select id="lyric-target-select">
+                        <option value="full_song">Full Song</option>
+                        <option value="chorus">Thematic Chorus</option>
+                        <option value="bridge">Worship Bridge</option>
+                        <option value="verse">Devotional Verse</option>
+                        <option value="multilingual">Multilingual Phrases</option>
+                    </select>
+                </div>
+
+                <div class="tool-section">
+                    <h3><span class="icon">✝️</span> Faith-Themed Prompts</h3>
+                    <label for="prompt-theme">Theme/Idea:</label>
+                    <textarea id="prompt-theme" placeholder="e.g., Faith in the wilderness, Grace abounds"></textarea>
+                    <label for="tone-select">Tone:</label>
+                    <select id="tone-select">
+                        <option value="reverent">Reverent</option>
+                        <option value="empowering">Empowering</option>
+                        <option value="lament">Lament</option>
+                        <option value="prophetic">Prophetic</option>
+                        <option value="exalting">Exalting</option>
+                    </select>
+                </div>
+
+                <div class="tool-section">
+                    <h3><span class="icon">📖</span> Scripture Integration</h3>
+                    <label for="scripture-input">Key Verses/Passages:</label>
+                    <input type="text" id="scripture-input" placeholder="e.g., Psalm 23, Isaiah 43:2">
+                    <button id="integrate-scripture-button">Use Scripture</button>
+                </div>
+
+                <div class="tool-section">
+                    <h3><span class="icon">🎼</span> Arrangement & Structure</h3>
+                    <label for="structure-type">Structure Type:</label>
+                    <select id="structure-type">
+                        <option value="verse_chorus">Verse-Chorus</option>
+                        <option value="aaba">AABA</option>
+                        <option value="continuous_flow">Continuous Flow</option>
+                        <option value="anthemic_build">Anthemic Build</option>
+                    </select>
+                    <label for="voice-arrangement">Voice Arrangement:</label>
+                    <select id="voice-arrangement">
+                        <option value="solo">Solo</option>
+                        <option value="lead_harmony">Lead + Harmony</option>
+                        <option value="full_choir">Full Choir</option>
+                    </select>
+                    <label for="instrumentation-style">Instrumentation:</label>
+                    <select id="instrumentation-style">
+                        <option value="orchestral">Orchestral</option>
+                        <option value="band">Band</option>
+                        <option value="organ_led">Organ-led</option>
+                        <option value="acoustic">Acoustic</option>
+                        <option value="acappella">A Cappella</option>
+                    </select>
+                </div>
+                
+                <div class="tool-section">
+                    <h3><span class="icon">🎤</span> Style & Depth</h3>
+                    <label for="style-icon">Iconic Influence:</label>
+                    <select id="style-icon">
+                        <option value="none">None</option>
+                        <option value="aretha_franklin">Aretha Franklin</option>
+                        <option value="mahalia_jackson">Mahalia Jackson</option>
+                        <option value="kirk_franklin">Kirk Franklin</option>
+                        <option value="cece_winans">CeCe Winans</option>
+                        <option value="boyz_ii_men">Boyz II Men (Harmonies)</option>
+                        <option value="hans_zimmer">Hans Zimmer (Cinematic)</option>
+                    </select>
+                    <label for="lyrical-depth">Lyrical Depth:</label>
+                    <input type="range" id="lyrical-depth" min="1" max="3" value="2">
+                    <div class="range-labels">
+                        <span>Simple</span>
+                        <span>Poetic</span>
+                        <span>Theological</span>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3><span class="icon">✨</span> Creative Enhancers</h3>
+                    <button id="rewrite-verse">Rewrite Verse</button>
+                    <button id="build-bridge">Build Bridge</button>
+                    <button id="enhance-metaphor">Enhance Metaphor</button>
+                    <button id="intensify-hook">Intensify Hook</button>
+                </div>
+                
+                <div class="tool-section" id="songbook-section">
+                    <h3><span class="icon">📚</span> Songbook & Collab</h3>
+                    <label for="song-moods-input">Moods (comma-separated, AI will suggest):</label>
+                    <input type="text" id="song-moods-input" placeholder="e.g., uplifting, reflective, joyful">
+                    <button id="suggest-moods-button" style="margin-bottom: 0.5rem;">Suggest Moods (from current lyrics)</button>
+                    <button id="save-song">Save to Songbook</button>
+                    <input type="search" id="songbook-search" placeholder="Search songbook (title, lyrics, moods...)">
+                    <div id="songbook-list-container">
+                        <!-- Saved songs will be listed here -->
+                    </div>
+                </div>
+
+            </aside>
+            <div id="sidebar-resizer"></div>
+            <main id="main-content">
+                <div id="prompt-interface">
+                    <h2>Song Generation Prompt</h2>
+                    <textarea id="main-prompt-input" placeholder="e.g., A gospel ballad about trusting God when plans fall apart. Inspired by Psalm 46. Sung like CeCe Winans with rich choir backing and piano-driven build-up."></textarea>
+                    <button id="generate-song-button">Compose with Spirit <span class="wand-emoji">🪄</span></button>
+                </div>
+
+                <div id="song-output-area">
+                    <div class="output-header">
+                        <h2>Generated Song</h2>
+                        <button id="copy-lyrics-button" title="Copy Lyrics to Clipboard"><span class="icon">📋</span> Copy Lyrics</button>
+                    </div>
+                    <div id="song-title-output"></div>
+                    <div id="song-lyrics-output">
+                        <p>Your spiritual song will appear here...</p>
+                    </div>
+                    <div id="suggested-rewrite-output" style="display: none;">
+                        <h4>Suggested Rewrite</h4>
+                        <pre id="rewrite-content-identifier"></pre>
+                        <pre id="rewrite-content-lyrics"></pre>
+                    </div>
+                    <div id="song-structure-output">
+                        <!-- Structure notes, dynamics, etc. -->
+                    </div>
+                    <div id="chord-chart-output">
+                        <!-- Suggested chord chart -->
+                    </div>
+                </div>
+                
+                <div id="preview-player-container">
+                    <h3>Preview</h3>
+                    <div id="preview-player">
+                        <!-- Waveform and player controls will go here -->
+                        <p>Audio preview placeholder. Click a simulation button below to generate.</p>
+                    </div>
+                    <div id="vocal-simulation-controls">
+                        <h4>Vocal Simulation (Premium)</h4>
+                        <button id="simulate-lead-female">Simulate Lead Female</button>
+                        <button id="simulate-lead-male">Simulate Lead Male</button>
+                        <button id="simulate-choir-lead">Simulate Choir (Lead)</button>
+                        <p><small>Optional export as vocal stems or raw MIDI.</small></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Divina Harmonia. Let every spirit sing praise.</p>
+        </footer>
+    </div>
+
+    <div id="version-history-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="close-version-modal" class="close-button">&times;</span>
+            <h3 id="version-history-title">Version History for: <span>Song Title</span></h3>
+            <div id="version-list">
+                <!-- Versions will be listed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
